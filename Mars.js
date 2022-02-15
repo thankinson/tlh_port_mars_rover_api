@@ -35,7 +35,7 @@ const MarsApi = () => {
         message: ""
     })
     // fetching the api
-    // W0rwSRjRqCPPn1QjC7rSUI6m3z9cxbAlgrhB5ntp
+    
     const MarsCollect = async () =>{
         try {
         const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${marsRover}/photos?sol=${marsSol}&api_key=${REACT_APP_API_KEY}`);

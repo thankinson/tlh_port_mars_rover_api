@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-
+const { REACT_APP_API_KEY } = process.env;
 const NASAapi = () =>{
     return (<div id="div-container">
             <div id="div-header">
@@ -29,7 +29,7 @@ const NasaApi = () => {
     // fetching the api
     const NasaCollect = async () =>{
         try {
-        const response = await fetch("https://api.nasa.gov/planetary/apod?api_key=W0rwSRjRqCPPn1QjC7rSUI6m3z9cxbAlgrhB5ntp");
+        const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${REACT_APP_API_KEY }`);
         const nasaData = await response.json();
         console.log(nasaData)
         setNasa(nasaData)
