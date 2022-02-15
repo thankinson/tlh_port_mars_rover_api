@@ -10,7 +10,7 @@ const MarsApp = () =>{
                 <MarsApi />
       
             <div id="div-footer">
-                    <h4>CN My First Api Call || Tom Hankinson</h4>
+                    <h4>CN Mars Rover API CALL || Tom Hankinson</h4>
             </div>
      
     </div>)
@@ -89,7 +89,7 @@ const MarsApi = () => {
                     </div>
                     
                     {/* Input a number of Sol day for the rover and it will bring back images from that Solar day */}
-                    <div id="div-sol"><input type="text" placeholder='Input Sol Day Num' onChange={(event)=> setMarsSol(event.target.value) }  /></div>
+                    <div id="div-sol"><p>Enter a solar day:</p><input type="text" placeholder='Input Sol Day Num' onChange={(event)=> setMarsSol(event.target.value) }  /></div>
                     
                     <div id="div-button">
                         <button onClick={MarsCollect}>Get Photos</button>
