@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-
+const { REACT_APP_API_KEY } = process.env;
 const MarsApp = () =>{
     return (<div id="div-container">
             <div id="div-header">
@@ -18,6 +18,7 @@ const MarsApp = () =>{
 
 const MarsApi = () => {
     // nasa api useState variable
+  
     const [mars, setMars] = useState("")
 
     // mars rover choice and mars solar day useStates
@@ -34,13 +35,14 @@ const MarsApi = () => {
         message: ""
     })
     // fetching the api
+    // W0rwSRjRqCPPn1QjC7rSUI6m3z9cxbAlgrhB5ntp
     const MarsCollect = async () =>{
         try {
-        const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${marsRover}/photos?sol=${marsSol}&api_key=W0rwSRjRqCPPn1QjC7rSUI6m3z9cxbAlgrhB5ntp`);
+        const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${marsRover}/photos?sol=${marsSol}&api_key=${REACT_APP_API_KEY}`);
         const marsData = await response.json();
         console.log(marsData)
         setMars(marsData)
-        // setMarsImg(marsData.img_src)
+        // setMarsImg(marsImg.img_src)
     } 
         // catch the error 
         catch(errorLog){
@@ -49,10 +51,10 @@ const MarsApi = () => {
        }
     };
 
-    // useEffect(()=>{
-    //     console.log(mars)
-    //     MarsCollect()
-    // }, [])
+    useEffect(()=>{
+        console.log(mars)
+        MarsCollect()
+    }, [])
 
 
 
@@ -74,7 +76,7 @@ const MarsApi = () => {
                     {/* <img src={mars.img_src}/> */}
                     {/* {marsImg.map((imgMars) => {return <img src={imgMars} />} )} */}
                     {/* {marsImg.map((images)=> {return <img src={images[0]} />})} */}
-                    <img src={mars.img_src} />
+                    {mars.photos && <img src={mars.photos[0].img_src} />}
                 </div>
                 
                 {/* Click on a rover button to set your Mars Rover - variable: marsRover */}
